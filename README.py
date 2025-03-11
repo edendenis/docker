@@ -48,30 +48,63 @@
 # 
 # 1. **Instale os pacotes necessários para permitir que o `apt` use um repositório sobre HTTPS:** 
 # 
-#     ```
+#     ```bash
 #     sudo apt install \
 #         ca-certificates \
 #         curl \
 #         gnupg \
 #         lsb-release -y
 #     ```
-# 2. **Adicione a chave GPG oficial do `Docker`:**  `curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg`
+# 2. **Adicione a chave GPG oficial do `Docker`:**
+# 
+#     ```bash
+#     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+#     ```
 # 
 # 3. **Use o comando a seguir para configurar o repositório do `Docker`:**
 # 
-#     ```
+#     ```bash
 #     echo \
 #         "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
 #         $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 #     ```
 # 
-# 4. **Atualize o índice de pacotes do `apt` novamente:** `sudo apt update -y`
+# 4. **Atualize o índice de pacotes do `apt` novamente:**
 # 
-# 5. **Instale o `Docker Engine`, CLI do `Docker`, e `Containerd`:** `sudo apt install docker-ce docker-ce-cli containerd.io -y`
+#     ```bash
+#     sudo apt update -y
+#     ```
 # 
-# 6. **Para garantir que o `Docker` seja iniciado automaticamente na inicialização do sistema, execute:** `sudo systemctl enable docker`
+# 5. **Instale o `Docker Engine`, CLI do `Docker`, e `Containerd`:**
 # 
-# 7. **Para verificar se o `Docker` foi instalado corretamente e está funcionando, rode:** `sudo docker run hello-world`
+#     ```bash
+#     sudo apt install docker-ce docker-ce-cli containerd.io -y
+#     ```
+# 
+# 6. **Para garantir que o `Docker` seja iniciado automaticamente na inicialização do sistema, execute:**
+# 
+#     ```bash
+#     sudo systemctl enable docker
+#     ```
+# 
+# 7. **Verificar se o `Docker` está rodando corretamente**:
+# 
+#     ```bash
+#     sudo systemctl status docker
+#     ```
+# 
+# 8. **Permitir uso sem `sudo` (Opcional, mas recomendado):**
+# 
+#     ```bash
+#     sudo usermod -aG docker $USER
+#     echo "Restart or logout to apply permissions"
+#     ```
+# 
+# 9. **Para verificar se o `Docker` foi instalado corretamente e está funcionando, rode:**
+#     
+#     ```bash
+#     sudo docker run hello-world
+#     ```
 # 
 #     Este comando baixa uma imagem de teste e executa um container utilizando essa imagem. Se o container rodar com sucesso, isso indica que a instalação do `Docker` foi bem-sucedida.
 # 
@@ -81,7 +114,7 @@
 # 
 #     Após isso, faça logout e login novamente para que as alterações tenham efeito.
 # 
-# Siga esses passos para instalar o Docker no `Ubuntu 22.04 LTS` usando o `Terminal Emulator`.
+# Siga esses passos para instalar o `Docker` no `Ubuntu 22.04 LTS` usando o `Terminal Emulator`.
 
 # ### 1.1 Código completo para configurar/instalar/usar
 # 
@@ -92,7 +125,7 @@
 # 2. Digite o seguinte comando e pressione `Enter`:
 # 
 #     ```
-#     sudo apt clean                                                            
+#     sudo apt clean
 #     sudo apt autoclean
 #     sudo apt autoremove -y
 #     sudo apt update
